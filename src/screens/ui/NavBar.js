@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
 
 
 export const Navbar = () => {
     
+    const { user } = useContext(AuthContext);
+
+    console.log(user);    
+
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -44,7 +49,7 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav-item nav-link text-info'>
-                        Shacrom
+                    {user.name} 
                     </span>
                     <button 
                         className="nav-item btn" 
