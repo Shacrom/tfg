@@ -5,9 +5,8 @@ import { AuthContext } from '../../auth/context/AuthContext';
 export const LoginScreen = () => {
   
   const { login } = useContext(AuthContext);
-
   const navigate = useNavigate();
-
+  
   const handleLogin = () => {
 
     login('Marcos Miguel');
