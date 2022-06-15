@@ -4,7 +4,7 @@ import { AuthContext } from '../../auth/context/AuthContext';
 
 
 export const Navbar = () => {
-    
+
     const { user, logout } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -16,12 +16,12 @@ export const Navbar = () => {
             replace: true
         });
     };
-    
+
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-            <Link 
-                className="navbar-brand" 
+
+            <Link
+                className="navbar-brand"
                 to="/"
             >
                 WoWMap
@@ -30,14 +30,14 @@ export const Navbar = () => {
             <div className="navbar-collapse">
                 <div className="navbar-nav">
 
-                    <NavLink 
-                        className="nav-item nav-link" 
+                    <NavLink
+                        className="nav-item nav-link"
                         to="/characters"
                     >
                         Characters
                     </NavLink>
 
-                    <NavLink 
+                    <NavLink
                         className="nav-item nav-link"
                         to="/pets"
                     >
@@ -49,10 +49,10 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul className="navbar-nav ml-auto">
                     <span className='nav-item nav-link text-info'>
-                    {user.name} 
+                        {user.name}
                     </span>
-                    <button 
-                        className="nav-item btn" 
+                    <button
+                        className="nav-item btn"
                         to="/login"
                         onClick={handleLogout}
                     >

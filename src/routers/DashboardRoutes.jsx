@@ -9,12 +9,15 @@ export const DashboardRoutes = () => {
   return (
     <>
         <Navbar/>
+        <div className='container'>
+
         <Routes>
             <Route path="/characters" element={<CharactersScreen />} />
             <Route path="/map" element={<MapScreen />} />
             <Route path="/pets" element={<PetsScreen />} />
             <Route path="/" element={<MapScreen />} />
       </Routes>
+        </div>
     </>
   )
 }
