@@ -10,7 +10,7 @@ export const DashboardRoutes = () => {
     <>
         <Navbar/>
         <div className='container'>
-
+        
         <Routes>
             <Route path="/characters" element={<CharactersScreen />} />
             <Route path="/map" element={<MapScreen />} />

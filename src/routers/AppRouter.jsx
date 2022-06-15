@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { LoginScreen } from '../screens/login/LoginScreen'
+import { RegisterScreen } from '../screens/register/RegisterScreen'
 import { DashboardRoutes } from './DashboardRoutes'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
@@ -14,11 +15,14 @@ export const AppRouter = () => {
             <LoginScreen />
           </PublicRoute>
         } />
+        <Route path="register" element={
+          <RegisterScreen/>
+        }/>
         <Route path="/*" element={
           <PrivateRoute>
-            <DashboardRoutes/>
+            <DashboardRoutes />
           </PrivateRoute>
-        }/>
+        } />
       </Routes>
     </BrowserRouter>
   )
