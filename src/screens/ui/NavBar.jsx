@@ -16,9 +16,11 @@ export const Navbar = () => {
             replace: true
         });
     };
-
+    // TODO: quitar el NavBar de bootstrap pasando las funcionalidades al nuevo NavBar  
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <>
+        </>
+       /*  <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
 
             <Link
                 className="navbar-brand"
@@ -60,6 +62,6 @@ export const Navbar = () => {
                     </button>
                 </ul>
             </div>
-        </nav>
+        </nav> */
     )
 }
