@@ -29,7 +29,7 @@ export const SideBar = ({ sideBarWidth = 0 }) => {
 
                 <List>
                     {
-                        ["Ejmplo 1", "Ejmplo 2", "Ejmplo 3", "Ejmplo 4"].map(ejemplo => (
+                        ["Ejemplo 1", "Ejemplo 2", "Ejemplo 3", "Ejemplo 4"].map(ejemplo => (
                             <ListItem key={ejemplo} disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
