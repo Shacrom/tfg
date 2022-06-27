@@ -1,24 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../auth/context/AuthContext';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../../auth/layouts/AuthLayout';
 import { useForm } from '../../hooks';
-import { useDispatch } from 'react-redux';
 import { checkingCredentials, startGoogleSignIn } from '../../store/slices';
+import { useMemo } from 'react';
 
 export const LoginScreen = () => {
 
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { status } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const { email, password, onInputChange } = useForm({
     email: 'corre@gmail.com',
     password: '1234'
   })
 
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -71,6 +70,7 @@ export const LoginScreen = () => {
           <Grid container spacing={2} sx={{ mt: 1, mb: 2 }}>
             <Grid item xs={12} sm={6}>
               <Button
+                disabled={isAuthenticating}
                 type="submit"
                 variant='contained'
                 fullWidth
@@ -80,9 +80,10 @@ export const LoginScreen = () => {
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button 
+              <Button
+                disabled={isAuthenticating}
                 variant='contained'
-                onClick={onGoogleSignIn} 
+                onClick={onGoogleSignIn}
                 fullWidth>
                 <Google />
                 <Typography sx={{ ml: 1 }}>
