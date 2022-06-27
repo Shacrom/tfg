@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navbar } from "../screens/ui/NavBar"
 import { Route, Routes } from 'react-router-dom'
 import { CharactersScreen } from '../screens/characters/CharactersScreen'
 import { PetsScreen } from '../screens/pets/PetsScreen'
@@ -8,7 +7,6 @@ import { MapScreen } from '../screens/map/MapScreen'
 export const DashboardRoutes = () => {
   return (
     <>
-        <Navbar/>
         <div className='container'>
         
         <Routes>
