@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
@@ -6,17 +6,18 @@ import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../../auth/layouts/AuthLayout';
 import { useForm } from '../../hooks';
 import { checkingCredentials, startGoogleSignIn } from '../../store/slices';
-import { useMemo } from 'react';
+import validator from 'validator';
 
 export const LoginScreen = () => {
 
   const { status } = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const { email, password, onInputChange } = useForm({
+  const {formState, email, password, onInputChange } = useForm({
     email: 'corre@gmail.com',
     password: '1234'
   })
 
+  
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
