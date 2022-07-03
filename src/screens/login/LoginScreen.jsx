@@ -1,20 +1,20 @@
 import React, { useMemo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../../auth/layouts/AuthLayout';
 import { useForm } from '../../hooks';
-import { checkingCredentials, startGoogleSignIn } from '../../store/slices';
-import validator from 'validator';
+import {  startGoogleSignIn, startLoginWithEmailPassword } from '../../store/slices';
+
 
 export const LoginScreen = () => {
 
-  const { status } = useSelector(state => state.auth);
+  const { status ,errorMessage} = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const {formState, email, password, onInputChange } = useForm({
-    email: 'corre@gmail.com',
-    password: '1234'
+  const { email, password, onInputChange } = useForm({
+    email: 'marcos@marcos.com',
+    password: '123456'
   })
 
   
@@ -22,9 +22,7 @@ export const LoginScreen = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
-    console.log({ email, password });
-    dispatch(checkingCredentials());
+    dispatch(startLoginWithEmailPassword({email,password}));
   }
 
   const onGoogleSignIn = () => {
@@ -67,7 +65,11 @@ export const LoginScreen = () => {
               fullWidth
             />
           </Grid>
-
+          <Grid item xs={12} sx={{mt:2}} display={!!errorMessage ? '' : 'none'}>
+            <Alert severity='error'>
+              {errorMessage}
+            </Alert>
+          </Grid>
           <Grid container spacing={2} sx={{ mt: 1, mb: 2 }}>
             <Grid item xs={12} sm={6}>
               <Button

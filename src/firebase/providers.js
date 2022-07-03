@@ -1,5 +1,5 @@
 import { FastfoodOutlined } from "@mui/icons-material";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { FirebaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
@@ -25,12 +25,12 @@ export const signInWithGoogle = async () => {
     }
 }
 
-export const registerUserWithEmailPassword = async ({displayName, email, password }) => {
+export const registerUserWithEmailPassword = async ({ displayName, email, password }) => {
     try {
         const resp = await createUserWithEmailAndPassword(FirebaseAuth, email, password);
-        const {uid, photoURL} = resp.user;
-        await updateProfile(FirebaseAuth.currentUser, {displayName});
-    
+        const { uid, photoURL } = resp.user;
+        await updateProfile(FirebaseAuth.currentUser, { displayName });
+
         console.log(resp);
 
         return {
@@ -39,6 +39,19 @@ export const registerUserWithEmailPassword = async ({displayName, email, passwor
         }
 
     } catch (error) {
-        return {ok: false, errorMessage: error.message}
+        return { ok: false, errorMessage: error.message }
+    }
+}
+
+export const logingWithEmailPassword = async ({ email, password }) => {
+    try {
+        const resp = await signInWithEmailAndPassword(FirebaseAuth, email, password);
+        const { uid, photoURL, displayName, errorMessage} = resp.user
+        return {
+            ok: true,
+            uid, photoURL, email, displayName, errorMessage
+        }
+    } catch (error) {
+        return { ok: false, errorMessage: error.message }
     }
 }

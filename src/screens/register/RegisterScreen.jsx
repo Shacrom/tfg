@@ -89,7 +89,7 @@ export const RegisterScreen = () => {
           <Grid container spacing={2} sx={{ mt: 1, mb: 2 }}>
             <Grid item xs={12} >
               <Button
-                disable={isCheckingAuthentication}
+                disabled={isCheckingAuthentication}
                 variant='contained'
                 type='submit'
                 fullWidth>
