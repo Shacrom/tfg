@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { AuthLayout } from '../../auth/layouts/AuthLayout';
 import { useForm } from '../../hooks';
@@ -11,7 +11,7 @@ export const RegisterScreen = () => {
 
   const [formSubmitted, setFormSubmitted] = useState(false)
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { status, errorMessage } = useSelector(state => state.auth);
   const isCheckingAuthentication = useMemo(() => status === 'checking', [status]);
 
@@ -37,7 +37,7 @@ export const RegisterScreen = () => {
     setFormSubmitted(true);
     if (!isFormValid) return;
     dispatch(startCreatingUser(formState));
-    console.log(formState);
+    navigate('/map');
   };
 
   return (
@@ -100,7 +100,7 @@ export const RegisterScreen = () => {
 
           <Grid container direction='row' justifyContent={'end'}>
             <Typography sx={{ mx: 1 }}>¿Ya tienes una cuenta?</Typography>
-            <Link component={RouterLink} color='inherit' to="/login">
+            <Link component={RouterLink} color='inherit' to="/auth/login">
               Ingresar
             </Link>
           </Grid>

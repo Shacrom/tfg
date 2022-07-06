@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate, useNavigate } from 'react-router-dom';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../../auth/layouts/AuthLayout';
@@ -10,26 +10,25 @@ import {  startGoogleSignIn, startLoginWithEmailPassword } from '../../store/sli
 
 export const LoginScreen = () => {
 
+  const navigate = useNavigate();
   const { status ,errorMessage} = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const { email, password, onInputChange } = useForm({
     email: 'marcos@marcos.com',
     password: '123456'
   })
-
-  
-
   
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(startLoginWithEmailPassword({email,password}));
+    navigate('/map');
   }
 
   const onGoogleSignIn = () => {
-    console.log("onGoogleSignIn");
     dispatch(startGoogleSignIn());
+    navigate('/map');
   }
 
   /* const handleLogin = () => {
@@ -99,7 +98,7 @@ export const LoginScreen = () => {
           </Grid>
 
           <Grid container direction='row' justifyContent={'end'}>
-            <Link component={RouterLink} color='inherit' to="/register">
+            <Link component={RouterLink} color='inherit' to="/auth/register">
               Crear una cuenta
             </Link>
           </Grid>
