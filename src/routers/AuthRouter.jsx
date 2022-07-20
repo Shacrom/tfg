@@ -1,6 +1,6 @@
 import React from 'react'
-import { RegisterScreen } from '../screens/register/RegisterScreen'
-import { LoginScreen } from '../screens/login/LoginScreen'
+import { RegisterScreen } from '../screens/RegisterScreen'
+import { LoginScreen } from '../screens/LoginScreen'
 import { Route, Routes } from 'react-router-dom'
 export const AuthRouter = () => {
   return (

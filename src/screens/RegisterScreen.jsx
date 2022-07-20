@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
-import { AuthLayout } from '../../auth/layouts/AuthLayout';
-import { useForm } from '../../hooks';
-import validator from 'validator';
-import { startCreatingUser } from '../../store/slices';
+import { AuthLayout } from '../auth/layouts/AuthLayout';
+import { useForm } from '../hooks';
+import { startCreatingUser } from '../store/slices';
 
 export const RegisterScreen = () => {
 

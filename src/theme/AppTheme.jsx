@@ -1,12 +1,11 @@
 import { ThemeProvider } from "@emotion/react"
 import { CssBaseline } from "@mui/material"
-import { purpleTheme } from "./purpleTheme"
+import { blizzardTheme } from "./"
 import React from "react"
 
 export const AppTheme = ({ children }) => {
     return (
-        <ThemeProvider theme={purpleTheme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <ThemeProvider theme={blizzardTheme}>
             <CssBaseline />
             {children}
         </ThemeProvider>

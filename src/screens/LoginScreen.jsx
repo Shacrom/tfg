@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink, Navigate, useNavigate } from 'react-router-dom';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
-import { AuthLayout } from '../../auth/layouts/AuthLayout';
-import { useForm } from '../../hooks';
-import {  startGoogleSignIn, startLoginWithEmailPassword } from '../../store/slices';
+import { AuthLayout } from '../auth/layouts/AuthLayout';
+import { useForm } from '../hooks';
+import { startGoogleSignIn, startLoginWithEmailPassword } from '../store/slices';
 
 
 export const LoginScreen = () => {

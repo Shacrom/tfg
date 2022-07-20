@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { CharactersScreen } from '../screens/characters/CharactersScreen'
-import { PetsScreen } from '../screens/pets/PetsScreen'
-import { MapScreen } from '../screens/map/MapScreen'
+import { CharactersScreen } from '../screens/CharactersScreen'
+import { PetsScreen } from '../screens/PetsScreen'
+import { MapScreen } from '../screens/MapScreen'
 
 export const DashboardRoutes = () => {
   return (

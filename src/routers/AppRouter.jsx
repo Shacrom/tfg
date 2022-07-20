@@ -11,8 +11,8 @@ export const AppRouter = () => {
 
   const { status } = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  useEffect(() => {
 
+  useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       console.log(user);
@@ -23,11 +23,9 @@ export const AppRouter = () => {
     })
   }, [])
 
-
   if (status === 'checking') {
     return <CheckingAuth />
   }
-
 
   return (
     <Routes>

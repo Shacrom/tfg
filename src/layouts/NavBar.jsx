@@ -1,50 +1,64 @@
-import { MenuOutlined, LogoutOutlined} from '@mui/icons-material'
-import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
+import { LogoutOutlined } from '@mui/icons-material'
+import { AppBar, Button, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux';
+import { startLogout } from '../store/slices';
+import wowLogo from "../resources/images/wowLogo64.png";
+import hearthstoneLogo from "../resources/images/hearthstoneLogo64.png";
+import diabloLogo from "../resources/images/diabloLogo64.png";
 import { useNavigate } from 'react-router-dom';
-import { logout, startLogout } from '../store/slices';
 
 
-export const NavBar = ({sideBarWidth = 0}) => {
+export const NavBar = ({ sideBarWidth = 0 }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(startLogout());    
+    dispatch(startLogout());
   }
-  
+
+  const handleLogoButton = (button) => {
+    console.log(button);
+    navigate(`${button}`);
+  };
 
   return (
     <AppBar
-        position='fixed'
-        sx={{
-          width: {sm: `calc(100% - ${sideBarWidth}px)`},
-          ml: {sm: `${sideBarWidth}px`}
-        }}
+      position='fixed'
+      sx={{
+        /* width: { sm: `calc(100% - ${sideBarWidth}px)` }, */
+        /* ml: { sm: `${sideBarWidth}px` } */
+      }}
     >
-      <Toolbar>
-        <IconButton
-          color='inherit'
-          edge='start'
-          sx={{mr: 2, display: {sm: 'none'}}}
-        >
-          <MenuOutlined/>
-        </IconButton>
-
-        <Grid 
+      <Toolbar
+        disableGutters={true}
+      >
+        <Grid
           container
           direction='row'
           justifyContent='space-around'
           alignItems='center'
-        > 
+        >
+
           <Typography variant='h6' noWrap component='div'>Texto de ejemplo</Typography>
-          <IconButton color='error' onClick={handleLogout}>
-            <LogoutOutlined/>
+
+          <Grid>
+            <Button onClick={() => handleLogoButton('character')}>
+              <img alt='World of Warcraft logo' src={wowLogo} />
+            </Button>
+            <Button onClick={() => handleLogoButton('map')} sx={{ mx: 10 }}>
+              <img alt='Hearthstone logo' src={hearthstoneLogo} />
+            </Button>
+            <Button onClick={() => handleLogoButton('diablo')}>
+              <img alt='Diablo logo' src={diabloLogo} />
+            </Button>
+          </Grid>
+
+          <IconButton color='secondary' onClick={handleLogout}>
+            <LogoutOutlined />
           </IconButton>
 
         </Grid>
-
       </Toolbar>
     </AppBar>
   )

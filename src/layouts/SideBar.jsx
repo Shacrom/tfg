@@ -4,10 +4,8 @@ import { TurnedInNot } from '@mui/icons-material';
 
 export const SideBar = ({ sideBarWidth = 0 }) => {
     return (
-
         <Box
             component='nav'
-            sx={{ width: { sm: sideBarWidth }, flexShrink: { sm: 0 } }}
         >
             <Drawer
                 variant='permanent' //temporary
