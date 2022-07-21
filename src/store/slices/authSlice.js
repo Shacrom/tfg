@@ -8,6 +8,7 @@ export const authSlice = createSlice({
         email: null,
         displayName: null,
         photoURL: null,
+        token: null,
         errorMessage: null,
     },
     reducers: {
@@ -17,6 +18,9 @@ export const authSlice = createSlice({
             state.email = payload.email;
             state.displayName = payload.displayName;
             state.photoURL = payload.photoURL;
+            state.token = payload.token;
+            state.origin = payload.origin;
+            state.locale = payload.locale;
             state.errorMessage = null;
         },
         logout: (state, { payload }) => {

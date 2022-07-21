@@ -43,13 +43,13 @@ export const NavBar = ({ sideBarWidth = 0 }) => {
           <Typography variant='h6' noWrap component='div'>Texto de ejemplo</Typography>
 
           <Grid>
-            <Button onClick={() => handleLogoButton('character')}>
+            <Button onClick={() => handleLogoButton('worldofwarcraft')}>
               <img alt='World of Warcraft logo' src={wowLogo} />
             </Button>
-            <Button onClick={() => handleLogoButton('map')} sx={{ mx: 10 }}>
+            <Button onClick={() => handleLogoButton('hearthstone')} sx={{ mx: 10 }}>
               <img alt='Hearthstone logo' src={hearthstoneLogo} />
             </Button>
-            <Button onClick={() => handleLogoButton('diablo')}>
+            <Button onClick={() => handleLogoButton('diablo3')}>
               <img alt='Diablo logo' src={diabloLogo} />
             </Button>
           </Grid>

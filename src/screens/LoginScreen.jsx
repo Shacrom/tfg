@@ -11,18 +11,19 @@ import { startGoogleSignIn, startLoginWithEmailPassword } from '../store/slices'
 export const LoginScreen = () => {
 
   const navigate = useNavigate();
-  const { status ,errorMessage} = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const { status, errorMessage } = useSelector(state => state.auth);
   const { email, password, onInputChange } = useForm({
     email: 'marcos@marcos.com',
     password: '123456'
   })
-  
+
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(startLoginWithEmailPassword({email,password}));
+    dispatch(startLoginWithEmailPassword({ email, password }));
+    console.log(errorMessage);
     navigate('/map');
   }
 
@@ -66,7 +67,7 @@ export const LoginScreen = () => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} sx={{mt:2}} display={!!errorMessage ? '' : 'none'}>
+          <Grid item xs={12} sx={{ mt: 2 }} display={!!errorMessage ? '' : 'none'}>
             <Alert severity='error'>
               {errorMessage}
             </Alert>
